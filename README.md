@@ -1,12 +1,36 @@
 
 ## Was hier drin steckt
-- `config.toml`: meine persönliche Einstellungssammlung für die Codex CLI. 
+
+### Codex CLI
+- `config.toml`: meine persönliche Einstellungssammlung für die Codex CLI.
 
 - `agents.md`: Template mit allen Regeln und Guardrails. Gerne könnt ihr euch hier das rauskopieren was für euch sinnvoll ist.
 
 - `alias.md`: ein paar Shell-Aliasse, damit sich verschiedene Codex-Profile mit einem Kurzbefehl starten lassen.
 
 - Skills: Codex nutzt den Skills-Standard für spezialisierte Abläufe. Hinweis: In meinem älteren YouTube-Video spreche ich noch über den `prompts/`-Ordner – Codex nutzt inzwischen Skills. Kurze Übersicht in den offiziellen Docs: `https://developers.openai.com/codex/skills`.
+
+### Fish Shell
+- `fish/functions/ga.fish`: Erstellt einen Clone für parallele Entwicklung. Nutzt `--reference` für schnelle, platzsparende Clones.
+- `fish/functions/gd.fish`: Löscht einen Clone mit Sicherheitschecks (warnt bei uncommitted/unpushed changes).
+
+**Abhängigkeiten:** `brew install fzf gum`
+
+**Installation:**
+```fish
+cp fish/functions/*.fish ~/.config/fish/functions/
+```
+
+**Nutzung:**
+```fish
+cd ~/mein-projekt
+ga feature-name    # erstellt ../mein-projekt-feature-name auf branch agent/feature-name
+
+cd ../mein-projekt-feature-name
+gd                 # löscht den Clone (mit Bestätigung)
+```
+
+Ideal für Multi-Agent-Workflows wo mehrere AI-Agents parallel arbeiten sollen.
 
 ## Nutzung
 * Nicht einfach kopieren, schau dir die Konfigurationsfiles genau an, versteh sie, und nimm dir daraus nur das, was für dich Sinn macht. *

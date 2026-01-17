@@ -1,20 +1,51 @@
+# configs
 
-## Was hier drin steckt
+Meine persönlichen Konfigurationen für Dev-Tools.
 
-### Codex CLI
-- `config.toml`: meine persönliche Einstellungssammlung für die Codex CLI.
+## Struktur
 
-- `agents.md`: Template mit allen Regeln und Guardrails. Gerne könnt ihr euch hier das rauskopieren was für euch sinnvoll ist.
+```
+configs/
+├── codex/           # OpenAI Codex CLI
+│   ├── config.toml  # CLI-Einstellungen
+│   ├── agents.md    # Guardrails & Regeln
+│   └── alias.md     # Shell-Aliasse
+└── fish/            # Fish Shell
+    └── functions/
+        ├── ga.fish  # Git clone für parallele Entwicklung
+        └── gd.fish  # Clone sicher löschen
+```
 
-- `alias.md`: ein paar Shell-Aliasse, damit sich verschiedene Codex-Profile mit einem Kurzbefehl starten lassen.
+---
 
-- Skills: Codex nutzt den Skills-Standard für spezialisierte Abläufe. Hinweis: In meinem älteren YouTube-Video spreche ich noch über den `prompts/`-Ordner – Codex nutzt inzwischen Skills. Kurze Übersicht in den offiziellen Docs: `https://developers.openai.com/codex/skills`.
+## Codex CLI
 
-### Fish Shell
-- `fish/functions/ga.fish`: Erstellt einen Clone für parallele Entwicklung. Nutzt `--reference` für schnelle, platzsparende Clones.
-- `fish/functions/gd.fish`: Löscht einen Clone mit Sicherheitschecks (warnt bei uncommitted/unpushed changes).
+- `codex/config.toml`: meine persönliche Einstellungssammlung für die Codex CLI.
+- `codex/agents.md`: Template mit allen Regeln und Guardrails.
+- `codex/alias.md`: Shell-Aliasse für verschiedene Codex-Profile.
 
-**Abhängigkeiten:** `brew install fzf gum`
+**Installation:**
+```bash
+cp codex/config.toml ~/.codex/
+```
+
+Skills: Codex nutzt den Skills-Standard für spezialisierte Abläufe. Docs: https://developers.openai.com/codex/skills
+
+---
+
+## Fish Shell
+
+### ga / gd - Parallele Git-Entwicklung
+
+Funktionen für Multi-Agent-Workflows, wo mehrere AI-Agents gleichzeitig arbeiten.
+
+- `ga <name>`: Erstellt einen Clone mit `--reference` (schnell, platzsparend)
+- `gd`: Löscht Clone mit Sicherheitschecks (warnt bei uncommitted/unpushed)
+
+**Abhängigkeiten:**
+```bash
+brew install fzf gum
+```
 
 **Installation:**
 ```fish
@@ -24,21 +55,14 @@ cp fish/functions/*.fish ~/.config/fish/functions/
 **Nutzung:**
 ```fish
 cd ~/mein-projekt
-ga feature-name    # erstellt ../mein-projekt-feature-name auf branch agent/feature-name
+ga feature-name    # → ../mein-projekt-feature-name auf branch agent/feature-name
 
 cd ../mein-projekt-feature-name
-gd                 # löscht den Clone (mit Bestätigung)
+gd                 # → löscht den Clone (mit Bestätigung)
 ```
 
-Ideal für Multi-Agent-Workflows wo mehrere AI-Agents parallel arbeiten sollen.
+---
 
-## Nutzung
-* Nicht einfach kopieren, schau dir die Konfigurationsfiles genau an, versteh sie, und nimm dir daraus nur das, was für dich Sinn macht. *
-  
-- Platziere die `config.toml` nach `~/.codex` (oder dorthin, wo deine CLI nach Configs liegt).
+## Hinweis
 
-- Ich nutze inzwischen meistens `--yolo`, aber die Guardrails in diesem Repo sind ein guter Startpunkt.
-
-- Führe die alias.md Befehle aus, und speichere sie für deine Shell. Falls du dir da unsicher bist wie das geht einfach die AI deiner Wahl fragen ;)
-
-- Agents.md gehört in jedes neue Projekt, oder wenn ihr schon ein Projekt habt mit einer Agents.md dann dort anhängen
+Nicht einfach kopieren - schau dir die Files genau an und nimm nur das, was für dich Sinn macht.

@@ -2,22 +2,6 @@
 
 Meine persönlichen Konfigurationen für Dev-Tools.
 
-## Struktur
-
-```
-configs/
-├── codex/           # OpenAI Codex CLI
-│   ├── config.toml  # CLI-Einstellungen
-│   ├── agents.md    # Guardrails & Regeln
-│   └── alias.md     # Shell-Aliasse
-└── fish/            # Fish Shell
-    └── functions/
-        ├── ga.fish  # Git clone für parallele Entwicklung
-        └── gd.fish  # Clone sicher löschen
-```
-
----
-
 ## Codex CLI
 
 - `codex/config.toml`: meine persönliche Einstellungssammlung für die Codex CLI.

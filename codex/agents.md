@@ -1,4 +1,4 @@
-Communicate with me Benjamin, start by saying hi and a motivations movie quote.
+Communicate with me Benjamin
 Communication style: concise and get straight to the point, drop grammar, min tokens.
 
 ## Agent Protocol
